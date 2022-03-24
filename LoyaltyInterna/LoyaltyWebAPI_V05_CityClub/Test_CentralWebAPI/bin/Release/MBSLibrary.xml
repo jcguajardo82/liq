@@ -1,0 +1,60 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+MBSLibrary
+</name>
+</assembly>
+<members>
+<member name="T:MBSLibrary.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:MBSLibrary.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:MBSLibrary.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:MBSLibrary.ISoundEx">
+ <summary>
+ Abstract base class for all SoundEx implementations
+ Could also be used for other phonetic matching algorithms
+ such as "Metaphone"/"Metaphon".
+ </summary>
+</member>
+<member name="M:MBSLibrary.ISoundEx.Difference(System.String,System.String)">
+ <summary>
+ Implements the Difference algorithm, as found in SQL Server
+ </summary>
+ <param name="s1"></param>
+ <param name="s2"></param>
+ <returns>0-4 depending on the similarity of the two words</returns>
+</member>
+<member name="M:MBSLibrary.ISoundEx.EncodeChar(System.Char)">
+ <summary>
+ Marked as virtual so that concrete ISoundEx implementations can
+ replace this and add extra characters for encoding.
+ For example, the Online Dictionary of Computings specifies
+ several extra characters in the lookup table.
+ </summary>
+ <param name="c"></param>
+ <returns></returns>
+</member>
+<member name="T:MBSLibrary.SQLServerSoundEx">
+ <summary>
+ SQL Server only ignores adjacent duplicated phonetic sounds
+ Plus, it doesn't ignore a character if it is duplicated with the leading char
+ 
+ For example, SQL Server will encode "PPPP" as "P100", whereas Miracode will
+ encode it as "P000".
+ </summary>
+</member>
+</members>
+</doc>
